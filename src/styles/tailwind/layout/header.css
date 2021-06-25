@@ -1,0 +1,32 @@
+@layer components {
+  .nav__text {
+    @apply m-0;
+    @apply text-white;
+    @apply text-sm;
+    @apply font-semibold;
+    @apply whitespace-nowrap;
+  }
+  .nav__text--bold {
+    @apply nav__text;
+    @apply font-bold;
+  }
+  .nav__text--small {
+    @apply nav__text;
+    @apply text-xs;
+  }
+
+  .nav__button {
+    @apply p-2;
+    @apply cursor-pointer;
+    @apply border border-opacity-0 hover:border-opacity-100;
+    @apply rounded-sm;
+  }
+  .nav__button--top {
+    @apply nav__button;
+    @apply h-14;
+  }
+  .nav__button--bottom {
+    @apply nav__button;
+    @apply py-1 h-8;
+  }
+}
