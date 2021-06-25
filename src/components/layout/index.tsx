@@ -24,9 +24,7 @@ const Layout: React.FunctionComponent<LayoutProps> = (props: LayoutProps) => {
       </Head>
 
       <Header />
-      <div className="flex items-center justify-around flex-grow flex-col sm:flex-row">
-        {children}
-      </div>
+      <div className="relative flex-grow">{children}</div>
       <Footer />
     </div>
   )

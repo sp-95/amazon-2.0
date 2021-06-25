@@ -2,17 +2,5 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'react-responsive-carousel/lib/styles/carousel.min.css';
 @import './tailwind';
-
-@layer components {
-  .prose-all {
-    @apply prose sm:prose-lg lg:prose-xl;
-  }
-}
-
-@layer base {
-  body {
-    @apply prose-all;
-    @apply max-w-full;
-  }
-}
