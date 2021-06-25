@@ -41,7 +41,10 @@ const Header: React.FunctionComponent = () => {
               &#38; Orders
             </p>
           </div>
-          <div className="cursor-pointer">
+          <div className="relative flex cursor-pointer">
+            <span className="absolute top-0 right-0 h-4 w-4 bg-amazon-orange-200 text-black text-center font-bold text-xs rounded-full">
+              0
+            </span>
             <ShoppingCartIcon className="h-full w-10" />
           </div>
         </div>
