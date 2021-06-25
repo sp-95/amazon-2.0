@@ -36,7 +36,7 @@ const Header: React.FunctionComponent = () => {
             </div>{' '}
             <p className="nav__text--bold">Accounts &amp; Lists</p>
           </div>
-          <div className="nav__button--top">
+          <div className="nav__button--top hidden sm:block">
             <div>
               <p className="nav__text--small">Returns</p>
             </div>
@@ -58,9 +58,13 @@ const Header: React.FunctionComponent = () => {
         </span>
         <p className="nav__text nav__button--bottom">Today&apos;s Deals</p>
         <p className="nav__text nav__button--bottom">Gift Cards</p>
-        <p className="nav__text nav__button--bottom">Customer Service</p>
-        <p className="nav__text nav__button--bottom">Registry</p>
-        <p className="nav__text nav__button--bottom">Sell</p>
+        <p className="nav__text nav__button--bottom hidden sm:block">
+          Customer Service
+        </p>
+        <p className="nav__text nav__button--bottom hidden sm:block">
+          Registry
+        </p>
+        <p className="nav__text nav__button--bottom hidden sm:block">Sell</p>
       </div>
     </header>
   )
