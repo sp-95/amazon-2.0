@@ -1,9 +1,25 @@
 @layer components {
+  .nav__top {
+    @apply py-1 pr-1;
+    @apply bg-amazon-blue-900;
+    @apply flex items-center;
+  }
+  .nav__bottom {
+    @apply p-1;
+    @apply bg-amazon-black-600;
+    @apply flex items-center;
+  }
+
+  .nav__logo {
+    @apply nav__button--top;
+    @apply pt-3 pb-0 px-2;
+    @apply flex items-center flex-grow sm:flex-grow-0 flex-shrink-0;
+  }
+
   .nav__text {
     @apply m-0;
     @apply text-white;
-    @apply text-sm;
-    @apply font-semibold;
+    @apply text-sm font-semibold;
     @apply whitespace-nowrap;
   }
   .nav__text--bold {
@@ -17,6 +33,7 @@
 
   .nav__button {
     @apply p-2;
+    @apply text-white;
     @apply cursor-pointer;
     @apply border border-opacity-0 hover:border-opacity-100;
     @apply rounded-sm;
@@ -28,5 +45,43 @@
   .nav__button--bottom {
     @apply nav__button;
     @apply py-1 h-8;
+  }
+
+  .nav__hidden {
+    @apply hidden sm:block;
+  }
+
+  .nav__search__container {
+    @apply mx-1.5 h-11 w-full;
+    @apply rounded-md;
+    @apply focus-within:ring focus-within:ring-amazon-orange-500;
+    @apply hidden sm:flex items-center;
+  }
+  .nav__search__input {
+    @apply p-2.5 h-full w-full;
+    @apply rounded-l-md;
+    @apply focus:outline-none;
+  }
+  .nav__search__button {
+    @apply h-full;
+    @apply bg-amazon-orange-300 hover:bg-amazon-orange-400;
+    @apply rounded-r-md;
+    @apply cursor-pointer;
+    @apply flex items-center;
+  }
+
+  .nav__item-counter__container {
+    @apply relative;
+    @apply nav__button--top;
+  }
+  .nav__item-counter {
+    @apply absolute;
+    @apply top-2 right-2;
+    @apply h-4 w-4;
+    @apply bg-amazon-orange-200;
+    @apply text-black;
+    @apply text-xs font-bold;
+    @apply text-center;
+    @apply rounded-full;
   }
 }
