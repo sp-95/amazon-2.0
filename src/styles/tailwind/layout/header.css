@@ -2,23 +2,36 @@
   .nav__top {
     @apply py-1 pr-1;
     @apply bg-amazon-blue-900;
-    @apply flex items-center;
+    @apply flex items-center justify-between;
   }
   .nav__bottom {
-    @apply p-1;
+    @apply py-1;
     @apply bg-gray-800;
     @apply flex items-center;
   }
 
+  .nav__button {
+    @apply p-2;
+    @apply text-white;
+    @apply cursor-pointer;
+    @apply border border-opacity-0 hover:border-opacity-100;
+    @apply rounded-sm;
+  }
+  .nav__button--bottom {
+    @apply nav__button;
+    @apply p-2 pt-1.5;
+  }
+
   .nav__logo {
-    @apply nav__button--top;
+    @apply nav__button;
     @apply pt-3 pb-0 px-2;
-    @apply flex items-center flex-grow sm:flex-grow-0 flex-shrink-0;
+    @apply flex items-center flex-shrink-0;
   }
 
   .nav__text {
     @apply text-white;
     @apply text-sm font-semibold;
+    @apply leading-3;
     @apply whitespace-nowrap;
   }
   .nav__text--bold {
@@ -30,28 +43,12 @@
     @apply text-xs;
   }
 
-  .nav__button {
-    @apply p-2;
-    @apply text-white;
-    @apply cursor-pointer;
-    @apply border border-opacity-0 hover:border-opacity-100;
-    @apply rounded-sm;
-  }
-  .nav__button--top {
-    @apply nav__button;
-    @apply h-14;
-  }
-  .nav__button--bottom {
-    @apply nav__button;
-    @apply py-1 h-8;
-  }
-
   .nav__hidden {
     @apply hidden sm:block;
   }
 
   .nav__search__container {
-    @apply mx-1.5 h-11 w-full;
+    @apply mx-1.5 h-10 w-full;
     @apply rounded-md;
     @apply focus-within:ring focus-within:ring-amazon-orange-500;
     @apply hidden sm:flex items-center;
@@ -69,13 +66,9 @@
     @apply flex items-center;
   }
 
-  .nav__item-counter__container {
-    @apply relative;
-    @apply nav__button--top;
-  }
   .nav__item-counter {
     @apply absolute;
-    @apply top-2 right-2;
+    @apply top-1 right-1;
     @apply h-4 w-4;
     @apply bg-amazon-orange-200;
     @apply text-black;
