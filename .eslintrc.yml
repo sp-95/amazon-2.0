@@ -28,6 +28,8 @@ rules:
       'ignorePackages',
       { 'js': 'never', 'jsx': 'never', 'ts': 'never', 'tsx': 'never' },
     ]
+  'no-shadow': 'off'
+  '@typescript-eslint/no-shadow': ['error']
 settings:
   import/resolver:
     typescript: {}

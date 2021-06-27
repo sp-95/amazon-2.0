@@ -5,7 +5,7 @@ function Banner(): React.ReactElement {
   return (
     <div className="relative">
       <Carousel
-        // autoPlay
+        autoPlay
         infiniteLoop
         showStatus={false}
         showIndicators={false}

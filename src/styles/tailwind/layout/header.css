@@ -6,7 +6,7 @@
   }
   .nav__bottom {
     @apply p-1;
-    @apply bg-amazon-black-600;
+    @apply bg-gray-800;
     @apply flex items-center;
   }
 

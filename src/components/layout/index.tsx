@@ -24,7 +24,7 @@ const Layout: React.FunctionComponent<LayoutProps> = (props: LayoutProps) => {
       </Head>
 
       <Header />
-      <div className="relative flex-grow">{children}</div>
+      <div className="flex-grow">{children}</div>
       <Footer />
     </div>
   )
