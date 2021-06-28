@@ -12,7 +12,7 @@
 
   .nav__button {
     @apply p-3 pt-2;
-    @apply text-white focus:text-gray-300;
+    @apply text-white;
     @apply border border-opacity-0 hover:border-opacity-100;
     @apply focus:outline-none focus:border-opacity-0;
     @apply focus:ring focus:ring-amazon-orange-500;

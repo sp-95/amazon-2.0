@@ -13,7 +13,7 @@ const Layout: React.FunctionComponent<LayoutProps> = (props: LayoutProps) => {
   const { children, title, description } = props
 
   return (
-    <div className="flex flex-col min-h-screen w-screen">
+    <div className="flex flex-col min-h-screen">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
