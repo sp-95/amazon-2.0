@@ -27,7 +27,7 @@ export default function ProductFeed(
         ))}
 
       <img
-        src="/assets/images/banners/promo_banner.jpg"
+        src="/assets/images/banners/promo-banner.jpg"
         alt="AD"
         className="col-span-full"
       />

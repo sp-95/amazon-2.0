@@ -13,7 +13,7 @@ export default function Home(props: HomeProps): React.ReactElement {
 
   return (
     <Layout title="Amazon 2.0">
-      <main className="max-w-screen-2xl mx-auto bg-gray-200">
+      <main>
         <Banner />
 
         <ProductFeed products={products} />

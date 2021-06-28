@@ -1,6 +1,6 @@
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline'
-import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/client'
+import React from 'react'
 
 const TopNav: React.FunctionComponent = () => {
   const [searchFocused, setSearchFocused] = React.useState(false)
@@ -53,7 +53,7 @@ const TopNav: React.FunctionComponent = () => {
           <p className="nav__text--bold">&amp; Orders</p>
         </a>
 
-        <a href="/" className="relative nav__button">
+        <a href="/checkout" className="relative nav__button">
           <span className="nav__item-counter">0</span>
           <ShoppingCartIcon className="h-9" />
         </a>
