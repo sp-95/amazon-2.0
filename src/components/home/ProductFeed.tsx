@@ -12,53 +12,26 @@ export default function ProductFeed(
   const { products } = props
 
   return (
-    <section className="product__grid">
-      {products
-        .slice(0, 4)
-        .map(({ id, title, price, description, category, image }) => (
-          <Product
-            key={id}
-            title={title}
-            price={price}
-            description={description}
-            category={category}
-            image={image}
-          />
-        ))}
+    <section className="home__product__grid">
+      {products.slice(0, 4).map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
 
       <img
-        src="/assets/images/banners/promo_banner.jpg"
+        src="/assets/images/banners/promo-banner.jpg"
         alt="AD"
         className="col-span-full"
       />
 
       <div className="sm:col-span-2">
-        {products
-          .slice(4, 5)
-          .map(({ id, title, price, description, category, image }) => (
-            <Product
-              key={id}
-              title={title}
-              price={price}
-              description={description}
-              category={category}
-              image={image}
-            />
-          ))}
+        {products.slice(4, 5).map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
       </div>
 
-      {products
-        .slice(5, products.length)
-        .map(({ id, title, price, description, category, image }) => (
-          <Product
-            key={id}
-            title={title}
-            price={price}
-            description={description}
-            category={category}
-            image={image}
-          />
-        ))}
+      {products.slice(5, products.length).map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </section>
   )
 }

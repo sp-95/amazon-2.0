@@ -1,2 +1,9 @@
 @import './header';
 @import './footer';
+
+@layer base {
+  main {
+    @apply bg-gray-200;
+    @apply max-w-screen-2xl mx-auto;
+  }
+}

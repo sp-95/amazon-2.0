@@ -1,0 +1,13 @@
+@import './details';
+
+@layer components {
+  .product__category {
+    @apply text-gray-400;
+    @apply text-xs italic;
+    @apply text-right;
+  }
+
+  .product__image {
+    @apply mx-auto;
+  }
+}

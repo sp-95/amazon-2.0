@@ -1,6 +1,9 @@
+import { selectItems } from '@/slices/basketSlice'
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline'
-import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/client'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import Link from 'next/link'
 
 const TopNav: React.FunctionComponent = () => {
   const [searchFocused, setSearchFocused] = React.useState(false)
@@ -8,15 +11,19 @@ const TopNav: React.FunctionComponent = () => {
 
   const username = (session && session.user && session.user.name) || ''
 
+  const items = useSelector(selectItems)
+
   return (
     <nav className="nav__top">
-      <a href="/" className="nav__logo">
-        <img
-          src="/assets/images/amazon.png"
-          alt="Amazon Logo"
-          className="h-9"
-        />
-      </a>
+      <Link href="/">
+        <button type="button" className="nav__logo">
+          <img
+            src="/assets/images/amazon.png"
+            alt="Amazon Logo"
+            className="h-9"
+          />
+        </button>
+      </Link>
 
       <form
         className={`nav__search__container ${
@@ -53,10 +60,12 @@ const TopNav: React.FunctionComponent = () => {
           <p className="nav__text--bold">&amp; Orders</p>
         </a>
 
-        <a href="/" className="relative nav__button">
-          <span className="nav__item-counter">0</span>
-          <ShoppingCartIcon className="h-9" />
-        </a>
+        <Link href="/checkout">
+          <button type="button" className="relative nav__button">
+            <span className="nav__item-counter">{items.length}</span>
+            <ShoppingCartIcon className="h-9" />
+          </button>
+        </Link>
       </div>
     </nav>
   )

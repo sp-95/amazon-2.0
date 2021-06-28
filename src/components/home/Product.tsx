@@ -1,18 +1,20 @@
-import { StarIcon } from '@heroicons/react/solid'
+import { IProduct } from '@/@types/product'
+import { addToBasket } from '@/slices/basketSlice'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
+import ProductDetails from '../product/ProductDetails'
 
 interface ProductProps {
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
+  product: IProduct
 }
 
 function Product(props: ProductProps): React.ReactElement {
-  const { title, price, description, category, image } = props
+  const { product } = props
+  const { title, price, description, category, image } = product
+
+  const dispatch = useDispatch()
 
   const MAX_RATING = 5
   const MIN_RATING = 1
@@ -21,47 +23,34 @@ function Product(props: ProductProps): React.ReactElement {
   )
   const [hasPrime] = useState(Math.random() < 0.5)
 
+  const addItemToBasket = () => {
+    const item = {
+      ...product,
+      productId: product.id,
+      id: uuid4(),
+      rating,
+      hasPrime,
+    }
+    dispatch(addToBasket(item))
+  }
+
   return (
-    <div className="product__container z-0">
-      <div className="product__details">
-        <p className="product__category">{category}</p>
+    <div className="home__product__container z-0">
+      <p className="product__category">{category}</p>
 
-        <div className="product__image">
-          <Image src={image} height={200} width={200} objectFit="contain" />
-        </div>
-
-        <h4 className="product__title">{title}</h4>
-
-        <div className="product__rating-container">
-          {Array(rating)
-            .fill(0)
-            .map(() => (
-              <StarIcon key={uuid4()} className="product__rating" />
-            ))}
-        </div>
-
-        <p className="product__description">{description}</p>
-
-        <div className="product__price">
-          {new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(price)}
-        </div>
-
-        {hasPrime && (
-          <div className="product__prime">
-            <img
-              src="/assets/images/prime-tag.png"
-              alt="Prime"
-              className="product__prime__image"
-            />
-            <p className="product__prime__text">FREE Next-day delivery</p>
-          </div>
-        )}
+      <div className="product__image">
+        <Image src={image} height={200} width={200} objectFit="contain" />
       </div>
 
-      <button type="button" className="product__add-button">
+      <ProductDetails
+        title={title}
+        description={description}
+        price={price}
+        rating={rating}
+        hasPrime={hasPrime}
+      />
+
+      <button type="button" className="amazon-button" onClick={addItemToBasket}>
         Add to basket
       </button>
     </div>

@@ -1,5 +1,7 @@
 import { IProduct } from '@/@types/product'
-import Home from '@components/home'
+import Banner from '@components/home/Banner'
+import ProductFeed from '@components/home/ProductFeed'
+import Layout from '@components/layout'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 
@@ -10,7 +12,15 @@ interface HomePageProps {
 export default function HomePage(props: HomePageProps): React.ReactElement {
   const { data } = props
 
-  return <Home products={data} />
+  return (
+    <Layout title="Amazon 2.0">
+      <main>
+        <Banner />
+
+        <ProductFeed products={data} />
+      </main>
+    </Layout>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
