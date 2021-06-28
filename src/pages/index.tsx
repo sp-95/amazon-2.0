@@ -15,7 +15,7 @@ export default function HomePage(props: HomePageProps): React.ReactElement {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const response = await fetch('https://fakestoreapi.com/products')
+    const response = await fetch(process.env.API_URL || '')
     const data = await response.json()
 
     return {
@@ -23,20 +23,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
         data,
       },
     }
-  } catch {
-    try {
-      const response = await fetch('http://localhost:3000/api/products')
-      const data = await response.json()
-
-      return {
-        props: {
-          data,
-        },
-      }
-    } catch (error) {
-      return {
-        notFound: true,
-      }
+  } catch (error) {
+    return {
+      notFound: true,
     }
   }
 }
