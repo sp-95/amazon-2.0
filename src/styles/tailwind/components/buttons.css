@@ -13,4 +13,11 @@
     @apply ring-amazon-orange-500;
     box-shadow: 0 0 8px var(--tw-ring-color);
   }
+
+  .amazon-button--disabled {
+    @apply amazon-button;
+    @apply from-gray-200 to-gray-500;
+    @apply hover:from-gray-300 hover:to-gray-600;
+    @apply cursor-not-allowed;
+  }
 }

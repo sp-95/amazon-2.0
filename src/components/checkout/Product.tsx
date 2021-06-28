@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
 import ProductDetails from '../product/ProductDetails'
 
-interface CheckoutProductProps {
+interface ProductProps {
   item: IItem
 }
 
-function CheckoutProduct(props: CheckoutProductProps): ReactElement {
+function Product(props: ProductProps): ReactElement {
   const { item } = props
   const { title, price, description, image, rating, hasPrime } = item
 
@@ -59,4 +59,4 @@ function CheckoutProduct(props: CheckoutProductProps): ReactElement {
   )
 }
 
-export default CheckoutProduct
+export default Product
