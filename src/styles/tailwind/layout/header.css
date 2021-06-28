@@ -5,32 +5,35 @@
     @apply flex items-center justify-between;
   }
   .nav__bottom {
-    @apply py-1;
+    @apply py-1.5;
     @apply bg-gray-800;
     @apply flex items-center;
   }
 
   .nav__button {
-    @apply p-2;
-    @apply text-white;
-    @apply cursor-pointer;
+    @apply p-3 pt-2;
+    @apply text-white focus:text-gray-300;
     @apply border border-opacity-0 hover:border-opacity-100;
+    @apply focus:outline-none focus:border-opacity-0;
+    @apply focus:ring focus:ring-amazon-orange-500;
     @apply rounded-sm;
+    @apply focus:rounded-none;
   }
   .nav__button--bottom {
     @apply nav__button;
-    @apply p-2 pt-1.5;
+    @apply p-2;
+    @apply focus:text-gray-300;
   }
 
   .nav__logo {
     @apply nav__button;
-    @apply pt-3 pb-0 px-2;
+    @apply p-3 pb-0.5 pl-1.5;
     @apply flex items-center flex-shrink-0;
   }
 
   .nav__text {
     @apply text-white;
-    @apply text-sm font-semibold;
+    @apply text-base font-semibold;
     @apply leading-3;
     @apply whitespace-nowrap;
   }
@@ -40,7 +43,7 @@
   }
   .nav__text--small {
     @apply nav__text;
-    @apply text-xs;
+    @apply text-sm;
   }
 
   .nav__hidden {
@@ -48,7 +51,7 @@
   }
 
   .nav__search__container {
-    @apply mx-1.5 h-10 w-full;
+    @apply mx-1.5 h-11 w-full;
     @apply rounded-md;
     @apply focus-within:ring focus-within:ring-amazon-orange-500;
     @apply hidden sm:flex items-center;
@@ -61,8 +64,9 @@
   .nav__search__button {
     @apply h-full;
     @apply bg-amazon-orange-300 hover:bg-amazon-orange-400;
+    @apply outline-none;
+    @apply focus:ring focus:ring-amazon-orange-500;
     @apply rounded-r-md;
-    @apply cursor-pointer;
     @apply flex items-center;
   }
 

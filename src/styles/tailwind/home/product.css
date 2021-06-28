@@ -1,6 +1,6 @@
 @layer components {
   .product__section {
-    @apply m-5;
+    @apply p-5;
     margin-top: -25%;
     @apply grid grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
     @apply gap-5;
