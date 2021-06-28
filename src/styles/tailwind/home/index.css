@@ -1,18 +1,2 @@
+@import './banner';
 @import './product';
-
-@layer components {
-  .button {
-    @apply p-2;
-    @apply text-xs sm:text-sm;
-    @apply bg-gradient-to-b from-amazon-yellow-200 to-amazon-yellow-500;
-    @apply hover:from-amazon-yellow-300 hover:to-amazon-yellow-600;
-    @apply active:from-amazon-yellow-500 active:to-amazon-yellow-500;
-    @apply border border-black focus:border-amazon-orange-600;
-    @apply outline-none;
-    @apply rounded-sm;
-  }
-  .button:focus {
-    @apply ring-amazon-orange-500;
-    box-shadow: 0 0 8px var(--tw-ring-color);
-  }
-}

@@ -1,0 +1,7 @@
+@layer components {
+  .banner__fade-to-bg {
+    @apply absolute bottom-0;
+    @apply w-full h-3/5;
+    @apply bg-gradient-to-t from-gray-200 to-transparent;
+  }
+}

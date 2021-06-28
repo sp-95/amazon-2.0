@@ -59,7 +59,7 @@ function Banner(): React.ReactElement {
           />
         </div>
       </Carousel>
-      <div className="absolute w-full h-3/5 bottom-0 bg-gradient-to-t from-gray-200 to-transparent" />
+      <div className="banner__fade-to-bg" />
     </div>
   )
 }

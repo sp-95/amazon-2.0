@@ -22,44 +22,46 @@ function Product(props: ProductProps): React.ReactElement {
   const [hasPrime] = useState(Math.random() < 0.5)
 
   return (
-    <div className="relative flex flex-col m-5 bg-white p-10">
-      <p className="absolute top-2 right-2 text-xs italic text-gray-400">
-        {category}
-      </p>
+    <div className="product__container z-0">
+      <div className="product__details">
+        <p className="product__category">{category}</p>
 
-      <Image src={image} height={200} width={200} objectFit="contain" />
-
-      <h4 className="my-3">{title}</h4>
-
-      <div className="flex">
-        {Array(rating)
-          .fill(0)
-          .map(() => (
-            <StarIcon key={uuid4()} className="h-5 text-amazon-orange-300" />
-          ))}
-      </div>
-
-      <p className="text-xs my-2 line-clamp-2">{description}</p>
-
-      <div className="mb-5">
-        {new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        }).format(price)}
-      </div>
-
-      {hasPrime && (
-        <div className="flex items-center space-x-2 -mt-5">
-          <img
-            src="/assets/images/prime-tag.png"
-            alt="Prime"
-            className="w-12"
-          />
-          <p className="text-xs text-gray-500">FREE Next-day delivery</p>
+        <div className="product__image">
+          <Image src={image} height={200} width={200} objectFit="contain" />
         </div>
-      )}
 
-      <button type="button" className="mt-auto button">
+        <h4 className="product__title">{title}</h4>
+
+        <div className="product__rating-container">
+          {Array(rating)
+            .fill(0)
+            .map(() => (
+              <StarIcon key={uuid4()} className="product__rating" />
+            ))}
+        </div>
+
+        <p className="product__description">{description}</p>
+
+        <div className="product__price">
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(price)}
+        </div>
+
+        {hasPrime && (
+          <div className="product__prime">
+            <img
+              src="/assets/images/prime-tag.png"
+              alt="Prime"
+              className="product__prime__image"
+            />
+            <p className="product__prime__text">FREE Next-day delivery</p>
+          </div>
+        )}
+      </div>
+
+      <button type="button" className="product__add-button">
         Add to basket
       </button>
     </div>

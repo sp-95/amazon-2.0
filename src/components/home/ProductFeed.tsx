@@ -12,7 +12,7 @@ export default function ProductFeed(
   const { products } = props
 
   return (
-    <section className="product-container">
+    <section className="product__section">
       {products.map(({ id, title, price, description, category, image }) => (
         <Product
           key={id}
