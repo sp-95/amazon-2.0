@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Footer from './Footer'
-import Header from './Header'
+import Header from './header'
 
 export interface LayoutProps {
   children: React.ReactElement | React.ReactElement[]
