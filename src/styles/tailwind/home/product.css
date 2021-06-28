@@ -1,13 +1,15 @@
 @layer components {
-  .product__section {
+  .product__grid {
     @apply p-5;
     margin-top: -25%;
     @apply grid grid-flow-row-dense sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+    @apply grid-flow-row-dense;
     @apply gap-5;
   }
 
   .product__container {
     @apply p-5;
+    @apply h-full;
     @apply bg-white;
     @apply flex flex-col justify-between;
     @apply space-y-2;
