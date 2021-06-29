@@ -20,4 +20,16 @@
     @apply hover:from-gray-300 hover:to-gray-600;
     @apply cursor-not-allowed;
   }
+
+  .amazon-button-2 {
+    @apply p-3;
+    @apply text-xs sm:text-sm;
+    @apply ring-1 ring-yellow-400;
+    @apply bg-yellow-300 hover:bg-yellow-400;
+    @apply focus:bg-white;
+    @apply active:bg-yellow-300;
+    @apply outline-none;
+    @apply rounded-lg;
+    @apply shadow-sm;
+  }
 }

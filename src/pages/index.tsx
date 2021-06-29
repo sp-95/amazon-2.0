@@ -13,12 +13,12 @@ export default function HomePage(props: HomePageProps): React.ReactElement {
   const { data } = props
 
   return (
-    <Layout title="Amazon 2.0">
-      <main>
+    <Layout title="Amazon 2.0 | Spend less. Smile more.">
+      <section className="max-w-screen-2xl mx-auto">
         <Banner />
 
         <ProductFeed products={data} />
-      </main>
+      </section>
     </Layout>
   )
 }

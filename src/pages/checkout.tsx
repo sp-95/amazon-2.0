@@ -2,8 +2,9 @@ import { selectItems, selectTotal } from '@/slices/basketSlice'
 import Layout from '@components/layout'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Product from '@/components/checkout/Product'
 import { useSession } from 'next-auth/client'
+import LoggedIn from '@/components/checkout/LoggedIn'
+import LoggedOut from '@/components/checkout/LoggedOut'
 
 export default function Checkout(): React.ReactElement {
   const items = useSelector(selectItems)
@@ -11,31 +12,14 @@ export default function Checkout(): React.ReactElement {
   const [session] = useSession()
 
   return (
-    <Layout title="Amazon 2.0">
-      <main className="lg:flex justify-between">
-        <div className="p-5 w-full shadow-sm">
-          <div className="flex justify-center">
-            <img
-              src="/assets/images/banners/prime-day-banner.png"
-              alt="Prime Day"
-            />
-          </div>
-
-          <div className="flex flex-col p-5 space-y-10 bg-white">
-            <h1 className="text-2xl border-b pb-4">
-              {items.length === 0
-                ? 'Your Amazon Basket is empty'
-                : 'Shopping Basket'}
-            </h1>
-
-            {items.map((item) => (
-              <Product key={item.id} item={item} />
-            ))}
-          </div>
+    <Layout title="Amazon 2.0 | Shopping Cart">
+      <section className="p-5 pt-4 flex flex-col sm:flex-row space-x-5">
+        <div className="my-5 w-full bg-white">
+          {session ? <LoggedIn /> : <LoggedOut />}
         </div>
 
-        <div className="bg-white p-10 shadow-md">
-          <div className={`flex flex-col ${!items.length && 'invisible'}`}>
+        <div className={`bg-white p-10 ${!items.length && 'invisible'}`}>
+          <div className="flex flex-col">
             <h2 className="whitespace-nowrap">
               Subtotal ({items.length} items):{' '}
               <span className="font-bold">
@@ -57,7 +41,7 @@ export default function Checkout(): React.ReactElement {
             </button>
           </div>
         </div>
-      </main>
+      </section>
     </Layout>
   )
 }
