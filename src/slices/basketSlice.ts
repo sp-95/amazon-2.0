@@ -20,13 +20,23 @@ export const basketSlice = createSlice({
     removeFromBasket: (state, action: PayloadAction<IItem>) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id)
     },
+    updateInBasket: (state, action: PayloadAction<IItem>) => {
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      )
+      state.items[index] = action.payload
+    },
   },
 })
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions
+export const { addToBasket, removeFromBasket, updateInBasket } =
+  basketSlice.actions
 
 export const selectItems = (state: RootState): IItem[] => state.basket.items
 export const selectTotal = (state: RootState): number =>
-  state.basket.items.reduce((total, curr) => total + curr.price, 0)
+  state.basket.items.reduce(
+    (total, curr) => total + curr.price * curr.quantity,
+    0
+  )
 
 export default basketSlice.reducer

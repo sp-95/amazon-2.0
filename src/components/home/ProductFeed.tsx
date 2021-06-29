@@ -1,6 +1,6 @@
 import { IProduct } from '@/@types/product'
 import React from 'react'
-import Product from './Product'
+import ProductContainer from '../product/ProductContainer'
 
 interface ProductFeedProps {
   products: IProduct[]
@@ -14,7 +14,7 @@ export default function ProductFeed(
   return (
     <section className="home__product__grid">
       {products.slice(0, 4).map((product) => (
-        <Product key={product.id} product={product} />
+        <ProductContainer key={product.id} product={product} />
       ))}
 
       <img
@@ -25,12 +25,12 @@ export default function ProductFeed(
 
       <div className="sm:col-span-2">
         {products.slice(4, 5).map((product) => (
-          <Product key={product.id} product={product} />
+          <ProductContainer key={product.id} product={product} />
         ))}
       </div>
 
       {products.slice(5, products.length).map((product) => (
-        <Product key={product.id} product={product} />
+        <ProductContainer key={product.id} product={product} />
       ))}
     </section>
   )

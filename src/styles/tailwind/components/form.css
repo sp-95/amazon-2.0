@@ -1,0 +1,19 @@
+@layer components {
+  .number-input {
+    @apply p-2;
+    @apply bg-gray-100 hover:bg-gray-200;
+    @apply focus:bg-cyan-50 focus:ring-4 focus:ring-cyan-100;
+    @apply border border-gray-300;
+    @apply outline-none;
+    @apply text-center;
+    @apply rounded-md;
+    @apply shadow-lg;
+  }
+  .number-input::-webkit-inner-spin-button,
+  .number-input::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+  .number-input::selection {
+    @apply bg-transparent;
+  }
+}

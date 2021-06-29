@@ -1,12 +1,11 @@
 export interface IItem {
-  id: string
-  productId: number
+  id: number
   title: string
   price: number
   description: string
   image: string
-  rating: number
   hasPrime: boolean
+  quantity: number
 }
 
 export enum Category {

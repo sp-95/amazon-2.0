@@ -1,0 +1,8 @@
+@layer components {
+  .amazon-link {
+    @apply text-green-700 hover:text-amazon-orange-600;
+    @apply hover:underline;
+    @apply focus:outline-none focus:ring ring-green-700;
+    @apply rounded-md;
+  }
+}

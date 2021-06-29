@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -5,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        cyan: colors.cyan,
         'amazon-orange': {
           DEFAULT: '#FF9900',
           50: '#FFE2B8',

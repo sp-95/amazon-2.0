@@ -2,3 +2,26 @@
 @import './layout';
 @import './product';
 @import './home';
+
+@layer base {
+  main {
+    @apply bg-gray-200;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+    @apply font-bold;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+}

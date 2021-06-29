@@ -1,8 +1,2 @@
 @import './header';
 @import './footer';
-
-@layer base {
-  main {
-    @apply bg-gray-200;
-  }
-}

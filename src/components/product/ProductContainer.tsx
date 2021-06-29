@@ -1,17 +1,17 @@
 import { IProduct } from '@/@types/product'
 import { addToBasket } from '@/slices/basketSlice'
+import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
-import ProductDetails from '../product/ProductDetails'
 
 interface ProductProps {
   product: IProduct
 }
 
-function Product(props: ProductProps): React.ReactElement {
+function ProductContainer(props: ProductProps): React.ReactElement {
   const { product } = props
   const { title, price, description, category, image } = product
 
@@ -28,10 +28,8 @@ function Product(props: ProductProps): React.ReactElement {
   const addItemToBasket = () => {
     const item = {
       ...product,
-      productId: product.id,
-      id: uuid4(),
-      rating,
       hasPrime,
+      quantity: 1,
     }
     dispatch(addToBasket(item))
   }
@@ -44,13 +42,37 @@ function Product(props: ProductProps): React.ReactElement {
         <Image src={image} height={200} width={200} objectFit="contain" />
       </div>
 
-      <ProductDetails
-        title={title}
-        description={description}
-        price={price}
-        rating={rating}
-        hasPrime={hasPrime}
-      />
+      <div className="product__details">
+        <h4>{title}</h4>
+
+        <div className="product__rating-container">
+          {Array(rating)
+            .fill(0)
+            .map(() => (
+              <StarIcon key={uuid4()} className="product__rating" />
+            ))}
+        </div>
+
+        <p className="product__description">{description}</p>
+
+        <div className="product__price">
+          {new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          }).format(price)}
+        </div>
+
+        {hasPrime && (
+          <div className="product__prime">
+            <img
+              src="/assets/images/prime-tag.png"
+              alt="Prime"
+              className="product__prime__image"
+            />
+            <p className="product__prime__text">FREE Next-day delivery</p>
+          </div>
+        )}
+      </div>
 
       <button
         type="button"
@@ -64,4 +86,4 @@ function Product(props: ProductProps): React.ReactElement {
   )
 }
 
-export default Product
+export default ProductContainer

@@ -1,7 +1,7 @@
 @layer components {
   .amazon-button {
     @apply p-2;
-    @apply text-xs sm:text-sm;
+    @apply text-sm;
     @apply bg-gradient-to-b from-amazon-yellow-200 to-amazon-yellow-500;
     @apply hover:from-amazon-yellow-300 hover:to-amazon-yellow-600;
     @apply active:from-amazon-yellow-500 active:to-amazon-yellow-500;
@@ -22,14 +22,14 @@
   }
 
   .amazon-button-2 {
-    @apply p-3;
-    @apply text-xs sm:text-sm;
+    @apply p-1.5;
+    @apply text-sm;
     @apply ring-1 ring-yellow-400;
     @apply bg-yellow-300 hover:bg-yellow-400;
     @apply focus:bg-white;
     @apply active:bg-yellow-300;
     @apply outline-none;
     @apply rounded-lg;
-    @apply shadow-sm;
+    @apply shadow-md;
   }
 }
