@@ -44,7 +44,7 @@ const TopNav: React.FunctionComponent = () => {
       <div className="flex items-center">
         <button
           type="button"
-          className="nav__button flex flex-col justify-start"
+          className="nav__button--top"
           onClick={() => (!session ? signIn() : signOut())}
         >
           <p className="nav__text--small">
@@ -53,15 +53,15 @@ const TopNav: React.FunctionComponent = () => {
           <p className="nav__text--bold">Accounts &amp; Lists</p>
         </button>
 
-        <a href="/" className="nav__button nav__hidden">
-          <div>
+        <Link href="/">
+          <button type="button" className="nav__button--top nav__hidden">
             <p className="nav__text--small">Returns</p>
-          </div>
-          <p className="nav__text--bold">&amp; Orders</p>
-        </a>
+            <p className="nav__text--bold">&amp; Orders</p>
+          </button>
+        </Link>
 
         <Link href="/checkout">
-          <button type="button" className="relative nav__button">
+          <button type="button" className="relative nav__button--top">
             <span className="nav__item-counter">{items.length}</span>
             <ShoppingCartIcon className="h-9" />
           </button>

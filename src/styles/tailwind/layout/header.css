@@ -19,6 +19,10 @@
     @apply rounded-sm;
     @apply focus:rounded-none;
   }
+  .nav__button--top {
+    @apply nav__button;
+    @apply flex flex-col justify-start;
+  }
   .nav__button--bottom {
     @apply nav__button;
     @apply p-2;
@@ -47,7 +51,7 @@
   }
 
   .nav__hidden {
-    @apply hidden sm:block;
+    @apply hidden sm:flex;
   }
 
   .nav__search__container {
