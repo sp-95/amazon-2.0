@@ -23,7 +23,7 @@ export default function Checkout(): React.ReactElement {
             (!session || !items.length) && 'invisible'
           }`}
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col sm:w-72">
             <Subtotal />
 
             <button type="button" className="mt-2 mb-4 amazon-button-2">

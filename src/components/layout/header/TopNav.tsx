@@ -9,7 +9,8 @@ const TopNav: React.FunctionComponent = () => {
   const [searchFocused, setSearchFocused] = React.useState(false)
   const [session] = useSession()
 
-  const username = (session && session.user && session.user.name) || ''
+  const username =
+    (session && session.user && session.user.name?.split(' ')[0]) || ''
 
   const items = useSelector(selectItems)
 
@@ -61,9 +62,13 @@ const TopNav: React.FunctionComponent = () => {
         </Link>
 
         <Link href="/checkout">
-          <button type="button" className="relative nav__button--top">
+          <button
+            type="button"
+            className="relative nav__button--top flex flex-row items-end"
+          >
             <span className="nav__item-counter">{items.length}</span>
-            <ShoppingCartIcon className="h-9" />
+            <ShoppingCartIcon className="h-9 -mb-1 -ml-1" />
+            <p className="nav__text--bold hidden lg:block">Cart</p>
           </button>
         </Link>
       </div>

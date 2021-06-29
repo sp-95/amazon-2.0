@@ -11,7 +11,7 @@
   }
 
   .nav__button {
-    @apply p-3 pt-2;
+    @apply px-2.5 pb-3.5 pt-1.5;
     @apply text-white;
     @apply border border-opacity-0 hover:border-opacity-100;
     @apply focus:outline-none focus:border-opacity-0;
@@ -76,9 +76,9 @@
 
   .nav__item-counter {
     @apply absolute;
-    @apply top-1 right-1;
+    @apply top-1 right-2 lg:right-10;
     @apply h-4 w-4;
-    @apply bg-amazon-orange-200;
+    @apply bg-amazon-orange-500;
     @apply text-black;
     @apply text-xs font-bold;
     @apply text-center;
