@@ -1,10 +1,11 @@
+import { IItem } from '@/@types/item'
 import { IProduct } from '@/@types/product'
-import { addToBasket } from '@/slices/basketSlice'
+import { addToBasket, selectItems } from '@/slices/basketSlice'
 import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
 
 interface ProductProps {
@@ -13,7 +14,7 @@ interface ProductProps {
 
 function ProductContainer(props: ProductProps): React.ReactElement {
   const { product } = props
-  const { title, price, description, category, image } = product
+  const { id, title, price, description, category, image } = product
 
   const dispatch = useDispatch()
   const [session] = useSession()
@@ -25,12 +26,20 @@ function ProductContainer(props: ProductProps): React.ReactElement {
   )
   const [hasPrime] = useState(Math.random() < 0.5)
 
-  const addItemToBasket = () => {
-    const item = {
+  const items = useSelector(selectItems)
+  const index = items.findIndex((item) => item.id === id)
+  let item: IItem
+  if (index < 0) {
+    item = {
       ...product,
       hasPrime,
       quantity: 1,
     }
+  } else {
+    item = items[index]
+  }
+
+  const addItemToBasket = () => {
     dispatch(addToBasket(item))
   }
 
@@ -76,7 +85,11 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
       <button
         type="button"
-        className={session ? 'amazon-button' : 'amazon-button--disabled'}
+        className={
+          session && item.quantity < 10
+            ? 'amazon-button'
+            : 'amazon-button--disabled'
+        }
         disabled={!session}
         onClick={addItemToBasket}
       >

@@ -35,7 +35,7 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
       style={{
         gridTemplateColumns: 'fit-content(180px) 1fr fit-content(180px)',
       }}
-      className="flex flex-col lg:grid gap-5 border-b py-3.5"
+      className="flex flex-col lg:grid gap-5 py-3.5 border-b"
     >
       <Image
         src={image}

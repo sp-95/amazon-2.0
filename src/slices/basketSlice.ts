@@ -15,7 +15,15 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state, action: PayloadAction<IItem>) => {
-      state.items = [...state.items, action.payload]
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      )
+
+      if (index < 0) {
+        state.items = [...state.items, action.payload]
+      } else {
+        state.items[index].quantity += 1
+      }
     },
     removeFromBasket: (state, action: PayloadAction<IItem>) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id)
