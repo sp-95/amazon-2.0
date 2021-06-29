@@ -1,5 +1,6 @@
 import { IProduct } from '@/@types/product'
 import { addToBasket } from '@/slices/basketSlice'
+import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -15,6 +16,7 @@ function Product(props: ProductProps): React.ReactElement {
   const { title, price, description, category, image } = product
 
   const dispatch = useDispatch()
+  const [session] = useSession()
 
   const MAX_RATING = 5
   const MIN_RATING = 1
@@ -50,8 +52,13 @@ function Product(props: ProductProps): React.ReactElement {
         hasPrime={hasPrime}
       />
 
-      <button type="button" className="amazon-button" onClick={addItemToBasket}>
-        Add to basket
+      <button
+        type="button"
+        className={session ? 'amazon-button' : 'amazon-button--disabled'}
+        disabled={!session}
+        onClick={addItemToBasket}
+      >
+        Add to Cart
       </button>
     </div>
   )
