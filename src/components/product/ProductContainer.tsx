@@ -7,7 +7,11 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
-import { sendSuccessNotification } from '../notifications/Notification'
+import {
+  sendDangerNotification,
+  sendSuccessNotification,
+  sendWarningNotification,
+} from '../notifications/Notification'
 
 interface ProductProps {
   product: IProduct
@@ -40,9 +44,15 @@ function ProductContainer(props: ProductProps): React.ReactElement {
     item = items[index]
   }
 
-  const addItemToCart = () => {
-    dispatch(addToCart(item))
-    sendSuccessNotification('Item successfully added to Cart')
+  const handleAddToCart = () => {
+    if (!session)
+      sendWarningNotification('You must be logged in to add to Cart')
+    else if (item.quantity >= 10)
+      sendDangerNotification('Max item limit reached')
+    else {
+      dispatch(addToCart(item))
+      sendSuccessNotification('Item successfully added to Cart')
+    }
   }
 
   return (
@@ -92,8 +102,7 @@ function ProductContainer(props: ProductProps): React.ReactElement {
             ? 'amazon-button'
             : 'amazon-button--disabled'
         }`}
-        disabled={!session}
-        onClick={addItemToCart}
+        onClick={handleAddToCart}
       >
         Add to Cart
       </button>
