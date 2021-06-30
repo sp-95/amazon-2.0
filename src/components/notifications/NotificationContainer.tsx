@@ -3,11 +3,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Notification from './Notification'
 
-function NotificationProvider(): React.ReactElement {
+function NotificationContainer(): React.ReactElement {
   const notifications = useSelector(selectNotifications)
 
   return (
-    <div className="notification-wrapper">
+    <div className="notification-container">
       {notifications.map(({ id, type, message }) => {
         return <Notification key={id} id={id} type={type} message={message} />
       })}
@@ -15,4 +15,4 @@ function NotificationProvider(): React.ReactElement {
   )
 }
 
-export default NotificationProvider
+export default NotificationContainer

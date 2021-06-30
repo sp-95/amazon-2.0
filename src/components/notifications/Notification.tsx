@@ -1,7 +1,13 @@
 import type INotification from '@/@types/notification'
-import { removeNotification } from '@/slices/notificationsSlice'
+import { store } from '@/app/store'
+import NotificationType from '@/constants/NotificationType'
+import {
+  addNotification,
+  removeNotification,
+} from '@/slices/notificationsSlice'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { v4 as uuid4 } from 'uuid'
 
 function Notification(props: INotification): React.ReactElement {
   const { id, type, message } = props
@@ -63,3 +69,43 @@ function Notification(props: INotification): React.ReactElement {
 }
 
 export default Notification
+
+export function sendSuccessNotification(message: string): void {
+  store.dispatch(
+    addNotification({
+      id: uuid4(),
+      type: NotificationType.Success,
+      message,
+    })
+  )
+}
+
+export function sendDangerNotification(message: string): void {
+  store.dispatch(
+    addNotification({
+      id: uuid4(),
+      type: NotificationType.Danger,
+      message,
+    })
+  )
+}
+
+export function sendWarningNotification(message: string): void {
+  store.dispatch(
+    addNotification({
+      id: uuid4(),
+      type: NotificationType.Warning,
+      message,
+    })
+  )
+}
+
+export function sendInfoNotification(message: string): void {
+  store.dispatch(
+    addNotification({
+      id: uuid4(),
+      type: NotificationType.Info,
+      message,
+    })
+  )
+}

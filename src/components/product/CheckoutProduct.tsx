@@ -1,8 +1,9 @@
-import { IItem } from '@/@types/item'
+import type IItem from '@/@types/item'
 import { removeFromBasket, updateInBasket } from '@/slices/basketSlice'
 import Image from 'next/image'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { sendDangerNotification } from '../notifications/Notification'
 
 interface CheckoutProductProps {
   item: IItem
@@ -28,6 +29,7 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
 
   const removeItemFromBasket = () => {
     dispatch(removeFromBasket(item))
+    sendDangerNotification('Item removed from Cart')
   }
 
   return (

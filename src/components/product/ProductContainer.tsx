@@ -1,14 +1,13 @@
 import type IItem from '@/@types/item'
 import { IProduct } from '@/@types/product'
-import NotificationType from '@/constants/NotificationType'
 import { addToBasket, selectItems } from '@/slices/basketSlice'
-import { addNotification } from '@/slices/notificationsSlice'
 import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
+import { sendSuccessNotification } from '../notifications/Notification'
 
 interface ProductProps {
   product: IProduct
@@ -43,13 +42,7 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
   const addItemToBasket = () => {
     dispatch(addToBasket(item))
-    dispatch(
-      addNotification({
-        id: uuid4(),
-        type: NotificationType.Success,
-        message: 'Item successfully added to Cart',
-      })
-    )
+    sendSuccessNotification('Item successfully added to Cart')
   }
 
   return (
