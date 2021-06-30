@@ -8,7 +8,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
 import {
-  sendDangerNotification,
   sendSuccessNotification,
   sendWarningNotification,
 } from '../notifications/Notification'
@@ -48,7 +47,7 @@ function ProductContainer(props: ProductProps): React.ReactElement {
     if (!session)
       sendWarningNotification('You must be logged in to add to Cart')
     else if (item.quantity >= 10)
-      sendDangerNotification('Max item limit reached')
+      sendWarningNotification('Max item limit reached')
     else {
       dispatch(addToCart(item))
       sendSuccessNotification('Item successfully added to Cart')

@@ -3,7 +3,10 @@ import { removeFromCart, updateInCart } from '@/slices/cartSlice'
 import Image from 'next/image'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { sendInfoNotification } from '../notifications/Notification'
+import {
+  sendDangerNotification,
+  sendInfoNotification,
+} from '../notifications/Notification'
 
 interface CheckoutProductProps {
   item: IItem
@@ -17,17 +20,26 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
 
   const dispatch = useDispatch()
 
-  const updateQuantityInCart = () => {
-    const qty = parseInt(itemQuantity.current?.value || '1', 10)
-    dispatch(
-      updateInCart({
-        ...item,
-        quantity: qty,
-      })
-    )
+  const handleQuantityChange = () => {
+    if (itemQuantity.current) {
+      const qty = parseInt(itemQuantity.current.value || '1', 10)
+
+      if (qty < 1)
+        sendDangerNotification('Item quantity must be within 1 and 10')
+      else if (qty > 10)
+        sendDangerNotification('Item quantity must be within 1 and 10')
+      else {
+        dispatch(
+          updateInCart({
+            ...item,
+            quantity: qty,
+          })
+        )
+      }
+    }
   }
 
-  const removeItemFromCart = () => {
+  const handleItemDelete = () => {
     dispatch(removeFromCart(item))
     sendInfoNotification('Item removed from Cart')
   }
@@ -81,13 +93,13 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
             className="number-input"
             value={quantity}
             ref={itemQuantity}
-            onChange={updateQuantityInCart}
+            onChange={handleQuantityChange}
           />
           <span className="text-gray-300">|</span>
           <button
             type="button"
             className="amazon-link text-sm"
-            onClick={removeItemFromCart}
+            onClick={handleItemDelete}
           >
             Delete
           </button>
