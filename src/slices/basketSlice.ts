@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
-import { IItem } from '@/@types/item'
+import type IItem from '@/@types/item'
 
 interface BasketState {
   items: IItem[]

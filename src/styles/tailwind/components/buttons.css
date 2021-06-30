@@ -8,10 +8,11 @@
     @apply border border-black focus:border-amazon-orange-600;
     @apply outline-none;
     @apply rounded-sm;
-  }
-  .amazon-button:focus {
-    @apply ring-amazon-orange-500;
-    box-shadow: 0 0 8px var(--tw-ring-color);
+
+    &:focus {
+      @apply ring-amazon-orange-500;
+      box-shadow: 0 0 8px var(--tw-ring-color);
+    }
   }
 
   .amazon-button--disabled {

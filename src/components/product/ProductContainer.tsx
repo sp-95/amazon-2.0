@@ -1,6 +1,8 @@
-import { IItem } from '@/@types/item'
+import type IItem from '@/@types/item'
 import { IProduct } from '@/@types/product'
+import NotificationType from '@/constants/NotificationType'
 import { addToBasket, selectItems } from '@/slices/basketSlice'
+import { addNotification } from '@/slices/notificationsSlice'
 import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
@@ -41,6 +43,13 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
   const addItemToBasket = () => {
     dispatch(addToBasket(item))
+    dispatch(
+      addNotification({
+        id: uuid4(),
+        type: NotificationType.Success,
+        message: 'Item successfully added to Cart',
+      })
+    )
   }
 
   return (
@@ -85,11 +94,11 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
       <button
         type="button"
-        className={
+        className={`w-full ${
           session && item.quantity < 10
             ? 'amazon-button'
             : 'amazon-button--disabled'
-        }
+        }`}
         disabled={!session}
         onClick={addItemToBasket}
       >

@@ -1,4 +1,4 @@
-export interface IItem {
+interface IItem {
   id: number
   title: string
   price: number
@@ -8,9 +8,4 @@ export interface IItem {
   quantity: number
 }
 
-export enum Category {
-  Electronics = 'electronics',
-  Jewelery = 'jewelery',
-  MenSClothing = "men's clothing",
-  WomenSClothing = "women's clothing",
-}
+export default IItem

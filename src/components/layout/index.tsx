@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import NotificationProvider from '../notifications/NotificationProvider'
 import Disclaimer from './Disclaimer'
 import Footer from './Footer'
 import Header from './header'
@@ -27,7 +28,10 @@ const Layout: React.FunctionComponent<LayoutProps> = (props: LayoutProps) => {
       <Header />
       <main className="flex-grow">
         <Disclaimer />
-        {children}
+        <div className="relative">
+          <NotificationProvider />
+          {children}
+        </div>
       </main>
       <Footer />
     </div>
