@@ -1,4 +1,5 @@
 @import './components';
+@import './animations';
 @import './layout';
 @import './product';
 @import './home';

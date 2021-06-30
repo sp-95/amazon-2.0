@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import Disclaimer from './Disclaimer'
 import Footer from './Footer'
 import Header from './header'
 
@@ -24,7 +25,10 @@ const Layout: React.FunctionComponent<LayoutProps> = (props: LayoutProps) => {
       </Head>
 
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow">
+        <Disclaimer />
+        {children}
+      </main>
       <Footer />
     </div>
   )

@@ -1,15 +1,17 @@
 @layer components {
   .disclaimer {
-    @apply px-5 py-5 md:py-1 md:pr-8 space-x-2;
+    @apply p-5 md:py-1 md:pr-8 space-x-2;
     @apply bg-red-700;
     @apply text-yellow-300;
     @apply text-center md:text-justify;
     @apply flex flex-col md:flex-row items-center;
+    @apply slide-bottom;
   }
 
   .disclaimer__close-button {
     @apply absolute top-1 right-1;
     @apply w-6;
     @apply text-gray-400;
+    @apply flex-none;
   }
 }

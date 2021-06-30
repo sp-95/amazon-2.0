@@ -1,14 +1,12 @@
 import React from 'react'
 import TopNav from './TopNav'
 import BottomNav from './BottomNav'
-import Disclaimer from './Disclaimer'
 
 const Header: React.FunctionComponent = () => {
   return (
-    <header>
+    <header className="sticky top-0 shadow-xl z-50">
       <TopNav />
       <BottomNav />
-      <Disclaimer />
     </header>
   )
 }
