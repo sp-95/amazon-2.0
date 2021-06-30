@@ -18,6 +18,8 @@
     @apply amazon-button;
     @apply from-gray-200 to-gray-500;
     @apply hover:from-gray-300 hover:to-gray-600;
+    @apply focus:border-gray-600;
+    @apply focus:ring-gray-500;
     @apply cursor-not-allowed;
   }
 
