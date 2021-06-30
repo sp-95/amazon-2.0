@@ -1,6 +1,6 @@
 import type IItem from '@/@types/item'
 import { IProduct } from '@/@types/product'
-import { addToBasket, selectItems } from '@/slices/basketSlice'
+import { addToCart, selectItems } from '@/slices/cartSlice'
 import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
@@ -40,8 +40,8 @@ function ProductContainer(props: ProductProps): React.ReactElement {
     item = items[index]
   }
 
-  const addItemToBasket = () => {
-    dispatch(addToBasket(item))
+  const addItemToCart = () => {
+    dispatch(addToCart(item))
     sendSuccessNotification('Item successfully added to Cart')
   }
 
@@ -93,7 +93,7 @@ function ProductContainer(props: ProductProps): React.ReactElement {
             : 'amazon-button--disabled'
         }`}
         disabled={!session}
-        onClick={addItemToBasket}
+        onClick={addItemToCart}
       >
         Add to Cart
       </button>

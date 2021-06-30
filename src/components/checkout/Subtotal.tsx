@@ -1,4 +1,4 @@
-import { selectItems, selectTotal } from '@/slices/basketSlice'
+import { selectItems, selectTotal } from '@/slices/cartSlice'
 import React from 'react'
 import { useSelector } from 'react-redux'
 

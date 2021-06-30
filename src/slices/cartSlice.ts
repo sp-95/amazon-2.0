@@ -2,19 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
 import type IItem from '@/@types/item'
 
-interface BasketState {
+interface CartState {
   items: IItem[]
 }
 
-const initialState: BasketState = {
+const initialState: CartState = {
   items: [],
 }
 
-export const basketSlice = createSlice({
-  name: 'basket',
+export const cartSlice = createSlice({
+  name: 'cart',
   initialState,
   reducers: {
-    addToBasket: (state, action: PayloadAction<IItem>) => {
+    addToCart: (state, action: PayloadAction<IItem>) => {
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       )
@@ -25,10 +25,10 @@ export const basketSlice = createSlice({
         state.items[index].quantity += 1
       }
     },
-    removeFromBasket: (state, action: PayloadAction<IItem>) => {
+    removeFromCart: (state, action: PayloadAction<IItem>) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id)
     },
-    updateInBasket: (state, action: PayloadAction<IItem>) => {
+    updateInCart: (state, action: PayloadAction<IItem>) => {
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       )
@@ -37,14 +37,13 @@ export const basketSlice = createSlice({
   },
 })
 
-export const { addToBasket, removeFromBasket, updateInBasket } =
-  basketSlice.actions
+export const { addToCart, removeFromCart, updateInCart } = cartSlice.actions
 
-export const selectItems = (state: RootState): IItem[] => state.basket.items
+export const selectItems = (state: RootState): IItem[] => state.cart.items
 export const selectTotal = (state: RootState): number =>
-  state.basket.items.reduce(
+  state.cart.items.reduce(
     (total, curr) => total + curr.price * curr.quantity,
     0
   )
 
-export default basketSlice.reducer
+export default cartSlice.reducer

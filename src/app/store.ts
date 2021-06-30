@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import basketReducer from '@/slices/basketSlice'
-import notificationReducer from '@/slices/notificationsSlice'
+import cartSlicer from '@/slices/cartSlice'
+import notificationSlicer from '@/slices/notificationsSlice'
 
 export const store = configureStore({
   reducer: {
-    basket: basketReducer,
-    notifications: notificationReducer,
+    cart: cartSlicer,
+    notifications: notificationSlicer,
   },
 })
 

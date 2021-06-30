@@ -1,5 +1,5 @@
 import CheckoutProduct from '@/components/product/CheckoutProduct'
-import { selectItems } from '@/slices/basketSlice'
+import { selectItems } from '@/slices/cartSlice'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Subtotal from './Subtotal'

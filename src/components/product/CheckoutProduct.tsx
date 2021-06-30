@@ -1,5 +1,5 @@
 import type IItem from '@/@types/item'
-import { removeFromBasket, updateInBasket } from '@/slices/basketSlice'
+import { removeFromCart, updateInCart } from '@/slices/cartSlice'
 import Image from 'next/image'
 import React from 'react'
 import { useDispatch } from 'react-redux'
@@ -17,18 +17,18 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
 
   const dispatch = useDispatch()
 
-  const updateQuantityInBasket = () => {
+  const updateQuantityInCart = () => {
     const qty = parseInt(itemQuantity.current?.value || '1', 10)
     dispatch(
-      updateInBasket({
+      updateInCart({
         ...item,
         quantity: qty,
       })
     )
   }
 
-  const removeItemFromBasket = () => {
-    dispatch(removeFromBasket(item))
+  const removeItemFromCart = () => {
+    dispatch(removeFromCart(item))
     sendInfoNotification('Item removed from Cart')
   }
 
@@ -81,13 +81,13 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
             className="number-input"
             value={quantity}
             ref={itemQuantity}
-            onChange={updateQuantityInBasket}
+            onChange={updateQuantityInCart}
           />
           <span className="text-gray-300">|</span>
           <button
             type="button"
             className="amazon-link text-sm"
-            onClick={removeItemFromBasket}
+            onClick={removeItemFromCart}
           >
             Delete
           </button>

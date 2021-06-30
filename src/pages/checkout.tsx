@@ -1,7 +1,7 @@
 import LoggedIn from '@/components/checkout/LoggedIn'
 import LoggedOut from '@/components/checkout/LoggedOut'
 import Subtotal from '@/components/checkout/Subtotal'
-import { selectItems } from '@/slices/basketSlice'
+import { selectItems } from '@/slices/cartSlice'
 import Layout from '@components/layout'
 import { useSession } from 'next-auth/client'
 import React from 'react'

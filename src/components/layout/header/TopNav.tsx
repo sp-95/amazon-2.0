@@ -1,4 +1,4 @@
-import { selectItems } from '@/slices/basketSlice'
+import { selectItems } from '@/slices/cartSlice'
 import { SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import React from 'react'
