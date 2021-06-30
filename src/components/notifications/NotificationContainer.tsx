@@ -8,16 +8,8 @@ function NotificationContainer(): React.ReactElement {
 
   return (
     <div className="notification-container">
-      {notifications.map(({ id, type, icon, message }) => {
-        return (
-          <Notification
-            key={id}
-            id={id}
-            type={type}
-            icon={icon}
-            message={message}
-          />
-        )
+      {notifications.map(({ id, type, message }) => {
+        return <Notification key={id} id={id} type={type} message={message} />
       })}
     </div>
   )

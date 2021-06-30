@@ -15,8 +15,19 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
 
+const NotificationIcons = {
+  [NotificationType.Success]: <CheckCircleIcon className="notification-icon" />,
+  [NotificationType.Danger]: <XCircleIcon className="notification-icon" />,
+  [NotificationType.Warning]: (
+    <ExclamationCircleIcon className="notification-icon" />
+  ),
+  [NotificationType.Info]: (
+    <InformationCircleIcon className="notification-icon" />
+  ),
+}
+
 function Notification(props: INotification): React.ReactElement {
-  const { id, type, icon, message } = props
+  const { id, type, message } = props
 
   const [exit, setExit] = React.useState(false)
   const [width, setWidth] = React.useState(0)
@@ -69,7 +80,7 @@ function Notification(props: INotification): React.ReactElement {
       onMouseLeave={handleStartTimer}
     >
       <div className="p-1 flex items-center space-x-1">
-        {icon}
+        {NotificationIcons[type]}
         <span className="">{message}</span>
       </div>
       <div style={{ width: `${width}%` }} className="notification-bar" />
@@ -84,7 +95,6 @@ export function sendSuccessNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Success,
-      icon: <CheckCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -95,7 +105,6 @@ export function sendDangerNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Danger,
-      icon: <XCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -106,7 +115,6 @@ export function sendWarningNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Warning,
-      icon: <ExclamationCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -117,7 +125,6 @@ export function sendInfoNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Info,
-      icon: <InformationCircleIcon className="notification-icon" />,
       message,
     })
   )

@@ -24,10 +24,8 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
     if (itemQuantity.current) {
       const qty = parseInt(itemQuantity.current.value || '1', 10)
 
-      if (qty < 1)
-        sendDangerNotification('Item quantity must be within 1 and 10')
-      else if (qty > 10)
-        sendDangerNotification('Item quantity must be within 1 and 10')
+      if (qty < 1 || qty > 10)
+        sendDangerNotification('Item quantity limited from 1 to 10')
       else {
         dispatch(
           updateInCart({
@@ -93,7 +91,7 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
             className="number-input"
             value={quantity}
             ref={itemQuantity}
-            onChange={handleQuantityChange}
+            onInput={handleQuantityChange}
           />
           <span className="text-gray-300">|</span>
           <button
