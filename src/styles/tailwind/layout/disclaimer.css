@@ -6,6 +6,8 @@
     @apply text-center md:text-justify;
     @apply flex flex-col md:flex-row items-center;
     @apply slide-bottom;
+    @apply outline-none;
+    @apply ring-inset focus:ring focus:ring-yellow-300;
   }
 
   .disclaimer__close-button {
