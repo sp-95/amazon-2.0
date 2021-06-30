@@ -5,9 +5,9 @@ function Disclaimer(): React.ReactElement {
   const [isHidden, setIsHidden] = React.useState(false)
 
   return (
-    <div className={`relative nav__disclaimer ${isHidden && 'hidden'}`}>
+    <div className={`relative disclaimer ${isHidden && 'hidden'}`}>
       <button type="button" onClick={() => setIsHidden(true)}>
-        <XIcon className="nav__disclaimer__close-button" />
+        <XIcon className="disclaimer__close-button" />
       </button>
       <ExclamationIcon className="w-32 md:w-min" />
       <h2>
