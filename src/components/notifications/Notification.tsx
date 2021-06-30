@@ -5,12 +5,18 @@ import {
   addNotification,
   removeNotification,
 } from '@/slices/notificationsSlice'
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  InformationCircleIcon,
+  XCircleIcon,
+} from '@heroicons/react/outline'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
 
 function Notification(props: INotification): React.ReactElement {
-  const { id, type, message } = props
+  const { id, type, icon, message } = props
 
   const [exit, setExit] = React.useState(false)
   const [width, setWidth] = React.useState(0)
@@ -62,7 +68,10 @@ function Notification(props: INotification): React.ReactElement {
       onMouseEnter={handlePauseTimer}
       onMouseLeave={handleStartTimer}
     >
-      <p className="px-5 py-1">{message}</p>
+      <div className="p-1 flex items-center space-x-1">
+        {icon}
+        <span className="">{message}</span>
+      </div>
       <div style={{ width: `${width}%` }} className="notification-bar" />
     </div>
   )
@@ -75,6 +84,7 @@ export function sendSuccessNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Success,
+      icon: <CheckCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -85,6 +95,7 @@ export function sendDangerNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Danger,
+      icon: <XCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -95,6 +106,7 @@ export function sendWarningNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Warning,
+      icon: <ExclamationCircleIcon className="notification-icon" />,
       message,
     })
   )
@@ -105,6 +117,7 @@ export function sendInfoNotification(message: string): void {
     addNotification({
       id: uuid4(),
       type: NotificationType.Info,
+      icon: <InformationCircleIcon className="notification-icon" />,
       message,
     })
   )

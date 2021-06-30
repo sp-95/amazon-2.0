@@ -11,10 +11,15 @@
     @apply shadow-2xl;
     @apply overflow-hidden;
     @apply enter-right;
+  }
 
-    .notification-bar {
-      @apply h-2;
-    }
+  .notification-bar {
+    @apply h-2;
+  }
+
+  .notification-icon {
+    @apply h-6;
+    @apply flex-none;
   }
 
   .notification.success {
