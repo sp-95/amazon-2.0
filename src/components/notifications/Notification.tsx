@@ -65,6 +65,8 @@ function Notification(props: INotification): React.ReactElement {
 
   React.useEffect(() => {
     handleStartTimer()
+
+    return handleCloseNotification
   }, [])
 
   React.useEffect(() => {
