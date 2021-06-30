@@ -9,7 +9,7 @@ function Disclaimer(): React.ReactElement {
       <button type="button" onClick={() => setIsHidden(true)}>
         <XIcon className="nav__disclaimer__close-button" />
       </button>
-      <ExclamationIcon className="w-min" />
+      <ExclamationIcon className="w-32 md:w-min" />
       <h2>
         Disclaimer: This website is an Amazon clone made solely for educational
         purposes. Your login details are being handled using Firebase by Google
