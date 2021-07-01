@@ -21,7 +21,7 @@
   }
   .nav__button--top {
     @apply nav__button;
-    @apply flex flex-col justify-start;
+    @apply flex flex-col items-start;
   }
   .nav__button--bottom {
     @apply nav__button;
