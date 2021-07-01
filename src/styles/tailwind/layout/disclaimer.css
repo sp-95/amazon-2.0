@@ -5,9 +5,43 @@
     @apply text-yellow-300;
     @apply text-center md:text-justify;
     @apply flex flex-col md:flex-row items-center;
-    @apply enter-bottom;
     @apply outline-none;
     @apply ring-inset focus:ring focus:ring-yellow-300;
+  }
+
+  .show {
+    animation: enter-from-top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes enter-from-top {
+    0% {
+      max-height: 0;
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      max-height: 1000px;
+    }
+  }
+
+  .hide {
+    @apply overflow-hidden;
+    animation: exit-to-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes exit-to-top {
+    0% {
+      max-height: 1000px;
+    }
+    25% {
+      max-height: 100px;
+    }
+    100% {
+      max-height: 0;
+      opacity: 0;
+    }
   }
 
   .disclaimer__footer {

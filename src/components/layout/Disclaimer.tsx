@@ -3,12 +3,23 @@ import React from 'react'
 
 function Disclaimer(): React.ReactElement {
   const [isHidden, setIsHidden] = React.useState(false)
+  const [isRemoved, setIsRemoved] = React.useState(false)
+
+  const handleClick = () => {
+    setIsHidden(true)
+
+    setTimeout(() => {
+      setIsRemoved(true)
+    }, 810)
+  }
 
   return (
     <button
       type="button"
-      className={`relative disclaimer ${isHidden && 'hidden'}`}
-      onClick={() => setIsHidden(true)}
+      className={`relative disclaimer ${isHidden ? 'hide' : 'show'} ${
+        isRemoved && 'hidden'
+      }`}
+      onClick={handleClick}
     >
       <ExclamationIcon className="w-32 flex-none" />
 
