@@ -63,7 +63,9 @@
   .nav__search__input {
     @apply p-2.5 h-full w-full;
     @apply rounded-l-md;
-    @apply focus:outline-none;
+    @apply border-r-amazon-orange-300;
+    @apply focus:outline-none focus:ring-0;
+    @apply border focus:border-amazon-orange-500 focus:border-r-amazon-orange-300;
   }
   .nav__search__button {
     @apply h-full;
