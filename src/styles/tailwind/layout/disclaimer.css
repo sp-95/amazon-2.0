@@ -1,6 +1,6 @@
 @layer components {
   .disclaimer {
-    @apply p-5 md:py-1 md:pr-8 space-x-2;
+    @apply p-5 md:py-1 space-x-2;
     @apply bg-red-700;
     @apply text-yellow-300;
     @apply text-center md:text-justify;
@@ -10,10 +10,8 @@
     @apply ring-inset focus:ring focus:ring-yellow-300;
   }
 
-  .disclaimer__close-button {
-    @apply absolute top-1 right-1;
-    @apply w-6;
-    @apply text-gray-400;
-    @apply flex-none;
+  .disclaimer__footer {
+    @apply absolute top-1 md:top-auto md:bottom-1 md:left-3.5;
+    @apply text-xs italic;
   }
 }

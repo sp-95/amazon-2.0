@@ -1,6 +1,6 @@
+import NotificationContainer from '@components/notifications/NotificationContainer'
 import Head from 'next/head'
 import React from 'react'
-import NotificationContainer from '../notifications/NotificationContainer'
 import Disclaimer from './Disclaimer'
 import Footer from './Footer'
 import Header from './header'

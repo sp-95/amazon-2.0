@@ -1,16 +1,16 @@
 import type ICartItem from '@/@types/cartItem'
 import { IProduct } from '@/@types/product'
 import { addToCart, selectItems } from '@/slices/cartSlice'
+import {
+  sendSuccessNotification,
+  sendWarningNotification,
+} from '@components/notifications/Notification'
 import { StarIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid4 } from 'uuid'
-import {
-  sendSuccessNotification,
-  sendWarningNotification,
-} from '../notifications/Notification'
 
 interface ProductProps {
   product: IProduct

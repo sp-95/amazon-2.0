@@ -1,5 +1,5 @@
+import { ExclamationIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { ExclamationIcon, XIcon } from '@heroicons/react/outline'
 
 function Disclaimer(): React.ReactElement {
   const [isHidden, setIsHidden] = React.useState(false)
@@ -19,7 +19,7 @@ function Disclaimer(): React.ReactElement {
         other sensitive information within this website.
       </h2>
 
-      <XIcon className="disclaimer__close-button" />
+      <p className="disclaimer__footer">Click anywhere to close</p>
     </button>
   )
 }

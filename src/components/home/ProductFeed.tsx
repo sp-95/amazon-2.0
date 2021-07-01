@@ -1,6 +1,6 @@
 import { IProduct } from '@/@types/product'
+import ProductContainer from '@components/product/ProductContainer'
 import React from 'react'
-import ProductContainer from '../product/ProductContainer'
 
 interface ProductFeedProps {
   products: IProduct[]

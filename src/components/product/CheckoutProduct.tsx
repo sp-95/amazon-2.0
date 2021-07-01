@@ -1,12 +1,12 @@
 import type ICartItem from '@/@types/cartItem'
 import { removeFromCart, updateInCart } from '@/slices/cartSlice'
-import Image from 'next/image'
-import React from 'react'
-import { useDispatch } from 'react-redux'
 import {
   sendDangerNotification,
   sendInfoNotification,
-} from '../notifications/Notification'
+} from '@components/notifications/Notification'
+import Image from 'next/image'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 
 interface CheckoutProductProps {
   item: ICartItem
