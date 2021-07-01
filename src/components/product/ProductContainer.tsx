@@ -1,4 +1,4 @@
-import type IItem from '@/@types/item'
+import type ICartItem from '@/@types/cartItem'
 import { IProduct } from '@/@types/product'
 import { addToCart, selectItems } from '@/slices/cartSlice'
 import { StarIcon } from '@heroicons/react/solid'
@@ -32,12 +32,13 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
   const items = useSelector(selectItems)
   const index = items.findIndex((item) => item.id === id)
-  let item: IItem
+  let item: ICartItem
   if (index < 0) {
     item = {
       ...product,
       hasPrime,
       quantity: 1,
+      checked: true,
     }
   } else {
     item = items[index]

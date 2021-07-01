@@ -1,4 +1,4 @@
-import type IItem from '@/@types/item'
+import type ICartItem from '@/@types/cartItem'
 import { removeFromCart, updateInCart } from '@/slices/cartSlice'
 import Image from 'next/image'
 import React from 'react'
@@ -9,14 +9,23 @@ import {
 } from '../notifications/Notification'
 
 interface CheckoutProductProps {
-  item: IItem
+  item: ICartItem
 }
 
 function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
   const { item } = props
-  const { title, price, description, image, hasPrime, quantity } = item
+  const { title, price, description, image, hasPrime, quantity, checked } = item
 
   const dispatch = useDispatch()
+
+  const handleCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(
+      updateInCart({
+        ...item,
+        checked: event.target.checked,
+      })
+    )
+  }
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = event
@@ -47,7 +56,12 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
       className="flex flex-col lg:grid gap-5 py-3.5 border-b"
     >
       <div className="flex items-center justify-center ml-2 space-x-2">
-        <input type="checkbox" className="checkbox" />
+        <input
+          type="checkbox"
+          className="checkbox"
+          checked={checked}
+          onChange={(e) => handleCheck(e)}
+        />
         <Image
           src={image}
           height={180}

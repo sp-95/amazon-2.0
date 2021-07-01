@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
-import type IItem from '@/@types/item'
+import type ICartItem from '@/@types/cartItem'
 
 interface CartState {
-  items: IItem[]
+  items: ICartItem[]
 }
 
 const initialState: CartState = {
@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<IItem>) => {
+    addToCart: (state, action: PayloadAction<ICartItem>) => {
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       )
@@ -25,10 +25,10 @@ export const cartSlice = createSlice({
         state.items[index].quantity += 1
       }
     },
-    removeFromCart: (state, action: PayloadAction<IItem>) => {
+    removeFromCart: (state, action: PayloadAction<ICartItem>) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id)
     },
-    updateInCart: (state, action: PayloadAction<IItem>) => {
+    updateInCart: (state, action: PayloadAction<ICartItem>) => {
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       )
@@ -39,11 +39,10 @@ export const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart, updateInCart } = cartSlice.actions
 
-export const selectItems = (state: RootState): IItem[] => state.cart.items
+export const selectItems = (state: RootState): ICartItem[] => state.cart.items
 export const selectTotal = (state: RootState): number =>
-  state.cart.items.reduce(
-    (total, curr) => total + curr.price * curr.quantity,
-    0
-  )
+  state.cart.items
+    .filter((item) => item.checked)
+    .reduce((total, curr) => total + curr.price * curr.quantity, 0)
 
 export default cartSlice.reducer

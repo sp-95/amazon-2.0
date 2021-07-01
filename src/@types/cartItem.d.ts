@@ -1,4 +1,4 @@
-interface IItem {
+interface ICartItem {
   id: number
   title: string
   price: number
@@ -6,6 +6,7 @@ interface IItem {
   image: string
   hasPrime: boolean
   quantity: number
+  checked: boolean
 }
 
-export default IItem
+export default ICartItem
