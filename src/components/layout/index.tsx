@@ -2,7 +2,7 @@ import NotificationContainer from '@components/notifications/NotificationContain
 import Head from 'next/head'
 import React from 'react'
 import Disclaimer from './Disclaimer'
-import Footer from './Footer'
+import Footer from './footer'
 import Header from './header'
 
 export interface LayoutProps {

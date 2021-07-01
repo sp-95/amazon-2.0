@@ -7,6 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        blueGray: colors.blueGray,
+        teal: colors.teal,
         cyan: colors.cyan,
         'amazon-orange': {
           DEFAULT: '#FF9900',
