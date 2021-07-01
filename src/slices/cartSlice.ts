@@ -40,6 +40,8 @@ export const cartSlice = createSlice({
 export const { addToCart, removeFromCart, updateInCart } = cartSlice.actions
 
 export const selectItems = (state: RootState): ICartItem[] => state.cart.items
+export const selectSelectedItems = (state: RootState): ICartItem[] =>
+  state.cart.items.filter((item) => item.checked)
 export const selectTotal = (state: RootState): number =>
   state.cart.items
     .filter((item) => item.checked)
