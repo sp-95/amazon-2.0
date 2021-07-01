@@ -16,24 +16,21 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
   const { item } = props
   const { title, price, description, image, hasPrime, quantity } = item
 
-  const itemQuantity = React.useRef<HTMLInputElement>(null)
-
   const dispatch = useDispatch()
 
-  const handleQuantityChange = () => {
-    if (itemQuantity.current) {
-      const qty = parseInt(itemQuantity.current.value || '1', 10)
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { target } = event
+    const value = parseInt(target.value || '1', 10)
 
-      if (qty < 1 || qty > 10)
-        sendDangerNotification('Item quantity limited from 1 to 10')
-      else {
-        dispatch(
-          updateInCart({
-            ...item,
-            quantity: qty,
-          })
-        )
-      }
+    if (value < 1 || value > 10)
+      sendDangerNotification('Item quantity limited from 1 to 10')
+    else {
+      dispatch(
+        updateInCart({
+          ...item,
+          quantity: value,
+        })
+      )
     }
   }
 
@@ -86,12 +83,9 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
         <div className="space-x-4">
           <input
             type="number"
-            min="1"
-            max="10"
             className="number-input"
             value={quantity}
-            ref={itemQuantity}
-            onInput={handleQuantityChange}
+            onChange={(e) => handleQuantityChange(e)}
           />
           <span className="text-gray-300">|</span>
           <button

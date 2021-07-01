@@ -1,6 +1,6 @@
 @layer components {
   .number-input {
-    @apply p-2;
+    @apply p-1 w-20;
     @apply bg-gray-100 hover:bg-gray-200;
     @apply focus:bg-cyan-50 focus:ring-4 focus:ring-cyan-100;
     @apply border border-gray-300;
