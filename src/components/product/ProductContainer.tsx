@@ -57,32 +57,36 @@ function ProductContainer(props: ProductProps): React.ReactElement {
 
   return (
     <div className="home__product__container z-0">
-      <p className="product__category">{category}</p>
+      <div className="flex flex-col">
+        <p className="product__category">{category}</p>
 
-      <div className="product__image">
-        <Image src={image} height={200} width={200} objectFit="contain" />
+        <div className="product__image">
+          <Image src={image} height={200} width={200} objectFit="contain" />
+        </div>
+
+        <div className="product__details">
+          <h4>{title}</h4>
+
+          <div className="product__rating-container">
+            {Array(rating)
+              .fill(0)
+              .map(() => (
+                <StarIcon key={uuid4()} className="product__rating" />
+              ))}
+          </div>
+
+          <p className="product__description">{description}</p>
+
+          <div className="product__price">
+            {new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }).format(price)}
+          </div>
+        </div>
       </div>
 
-      <div className="product__details">
-        <h4>{title}</h4>
-
-        <div className="product__rating-container">
-          {Array(rating)
-            .fill(0)
-            .map(() => (
-              <StarIcon key={uuid4()} className="product__rating" />
-            ))}
-        </div>
-
-        <p className="product__description">{description}</p>
-
-        <div className="product__price">
-          {new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(price)}
-        </div>
-
+      <div>
         {hasPrime && (
           <div className="product__prime">
             <img
@@ -93,19 +97,19 @@ function ProductContainer(props: ProductProps): React.ReactElement {
             <p className="product__prime__text">FREE Next-day delivery</p>
           </div>
         )}
-      </div>
 
-      <button
-        type="button"
-        className={`w-full ${
-          session && item.quantity < 10
-            ? 'amazon-button'
-            : 'amazon-button--disabled'
-        }`}
-        onClick={handleAddToCart}
-      >
-        Add to Cart
-      </button>
+        <button
+          type="button"
+          className={`w-full ${
+            session && item.quantity < 10
+              ? 'amazon-button'
+              : 'amazon-button--disabled'
+          }`}
+          onClick={handleAddToCart}
+        >
+          Add to Cart
+        </button>
+      </div>
     </div>
   )
 }

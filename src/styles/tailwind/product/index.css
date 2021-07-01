@@ -6,7 +6,7 @@
   }
 
   .product__image {
-    @apply mx-auto;
+    @apply self-center;
   }
 
   .product__details {
