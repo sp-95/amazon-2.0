@@ -46,13 +46,16 @@ function CheckoutProduct(props: CheckoutProductProps): React.ReactElement {
       }}
       className="flex flex-col lg:grid gap-5 py-3.5 border-b"
     >
-      <Image
-        src={image}
-        height={180}
-        width={180}
-        objectFit="contain"
-        className="product__image"
-      />
+      <div className="flex items-center justify-center ml-2 space-x-2">
+        <input type="checkbox" className="checkbox" />
+        <Image
+          src={image}
+          height={180}
+          width={180}
+          objectFit="contain"
+          className="product__image"
+        />
+      </div>
 
       <div className="space-y-1">
         <h3>{title}</h3>

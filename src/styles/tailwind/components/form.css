@@ -1,4 +1,10 @@
 @layer components {
+  .checkbox {
+    @apply text-green-700 border-green-700;
+    @apply rounded-sm;
+    @apply focus:ring-1 focus:ring-green-700;
+  }
+
   .number-input {
     @apply p-1 w-20;
     @apply bg-gray-100 hover:bg-gray-200;
