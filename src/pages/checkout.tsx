@@ -1,10 +1,14 @@
+import CheckOut from '@/components/checkout/CheckOut'
 import LoggedIn from '@/components/checkout/LoggedIn'
 import LoggedOut from '@/components/checkout/LoggedOut'
+import { selectItems } from '@/slices/cartSlice'
 import Layout from '@components/layout'
 import { useSession } from 'next-auth/client'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-export default function Checkout(): React.ReactElement {
+export default function CheckoutPage(): React.ReactElement {
+  const items = useSelector(selectItems)
   const [session] = useSession()
 
   return (
@@ -14,7 +18,13 @@ export default function Checkout(): React.ReactElement {
           {session ? <LoggedIn /> : <LoggedOut />}
         </div>
 
-        <Checkout />
+        <div
+          className={`bg-white p-5 ${
+            (!session || !items.length) && 'invisible'
+          }`}
+        >
+          <CheckOut />
+        </div>
       </section>
     </Layout>
   )
