@@ -11,7 +11,7 @@ export default function SuccessPage(): React.ReactElement {
       <section className="max-w-screen-2xl mx-auto">
         <div className="p-10 bg-white space-y-5">
           <div className="flex items-center space-x-2">
-            <CheckCircleIcon className="text-green-500 h-10" />
+            <CheckCircleIcon className="text-green-500 h-10 flex-none" />
             <h1>Thank you, your order has been confirmed!</h1>
           </div>
           <p>
