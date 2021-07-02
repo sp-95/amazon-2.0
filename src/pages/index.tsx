@@ -3,6 +3,7 @@ import Banner from '@components/home/Banner'
 import ProductFeed from '@components/home/ProductFeed'
 import Layout from '@components/layout'
 import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/client'
 import React from 'react'
 
 interface HomePageProps {
@@ -23,14 +24,16 @@ export default function HomePage(props: HomePageProps): React.ReactElement {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
+    const session = await getSession(context)
     const response = await fetch(process.env.API_URL || '')
     const data = await response.json()
 
     return {
       props: {
         data,
+        session,
       },
     }
   } catch (error) {

@@ -1,7 +1,9 @@
 import Layout from '@components/layout'
-import React from 'react'
 import { CheckCircleIcon } from '@heroicons/react/solid'
+import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/client'
 import { useRouter } from 'next/dist/client/router'
+import React from 'react'
 
 export default function SuccessPage(): React.ReactElement {
   const router = useRouter()
@@ -30,4 +32,14 @@ export default function SuccessPage(): React.ReactElement {
       </section>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session,
+    },
+  }
 }
