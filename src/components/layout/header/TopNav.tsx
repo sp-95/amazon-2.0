@@ -54,7 +54,7 @@ const TopNav: React.FunctionComponent = () => {
           <p className="nav__text--bold">Accounts &amp; Lists</p>
         </button>
 
-        <Link href="/">
+        <Link href="/orders">
           <button type="button" className="nav__button--top nav__hidden">
             <p className="nav__text--small">Returns</p>
             <p className="nav__text--bold">&amp; Orders</p>
